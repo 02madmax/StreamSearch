@@ -52,3 +52,14 @@ try {
 } catch (error) {
 	console.error(error);
 }
+
+// Event Listener for to select dropdown genre 
+var dropdownSelection = document.querySelectorAll(".dropdown-item");
+var dropdownButton = document.querySelector('#dropdown-button');
+
+dropdownSelection.forEach(function(dropItem) {
+    dropItem.addEventListener('click',function(){
+        var selectedOption = dropItem.textContent;
+        dropdownButton.textContent = selectedOption;
+    });
+});

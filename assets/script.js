@@ -1,59 +1,4 @@
-// Movie of the night streaming services api data
-const urlServices = 'https://streaming-availability.p.rapidapi.com/v2/services';
-const optionsServices = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
-		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(urlServices, optionsServices);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-
-//Movie of the night genres api
-const urlGenres = 'https://streaming-availability.p.rapidapi.com/v2/genres';
-const optionsGenres = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
-		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(urlGenres, optionsGenres);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-
-// IMDB api data
-
-const IMDBurl = 'https://online-movie-database.p.rapidapi.com/auto-complete?q=back%20to%20the%20future';
-const IMDBoptions = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'c124cecf0emshdb2c0b87705b346p17c3d6jsn1f514186fbf9',
-		'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(IMDBurl, IMDBoptions);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-
-// Event Listener for to select dropdown genre 
+// Event listener for to select dropdown genre 
 var dropdownSelection = document.querySelectorAll(".dropdown-item");
 var dropdownButton = document.querySelector('#dropdown-button');
 
@@ -63,3 +8,53 @@ dropdownSelection.forEach(function(dropItem) {
         dropdownButton.textContent = selectedOption;
     });
 });
+
+const fetchData = async (genreId) => {
+  const url = `https://streaming-availability.p.rapidapi.com/v2/search/basic?country=us&services=netflix%2Cprime.buy%2Chulu.addon.hbo%2Cpeacock.free&output_language=en&show_type=movie&genre=${genreId}&show_original_language=en`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
+      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//Event listener for search button
+var searchButton = document.querySelector('#search');
+
+searchButton.addEventListener('click', function() {
+    var selectedGenre = dropdownButton.textContent;
+    //Key for API query
+    var genreKey = {
+      "Action": "28",
+      "Adventure": "12",
+      "Animation": "16",
+      "Comedy": "35",
+      "Crime": "80",
+      "Drama": "18",
+      "Family": "10751",
+      "Fantasy": "14",
+      "History": "36",
+      "Horror": "27",
+      "Music": "10402",
+      "Mystery": "9648",
+      "Romance": "10749",
+      "Science Fiction": "878",
+      "Thriller": "53",
+      "War": "10752",
+      "Western": "37"
+    };
+  
+    var selectedGenreId = genreKey[selectedGenre];
+    
+    fetchData(selectedGenreId);
+  });

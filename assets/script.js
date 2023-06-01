@@ -1,9 +1,6 @@
-// Movie of the night streaming services API data
-const servicesData = []; // Array to store services data
-
-async function fetchServicesData() {
-  const urlServices = 'https://streaming-availability.p.rapidapi.com/v2/services';
-  const optionsServices = {
+const fetchData = async () => {
+  const url = 'https://streaming-availability.p.rapidapi.com/v2/search/basic?country=us&services=netflix%2Cprime.buy%2Chulu.addon.hbo%2Cpeacock.free&output_language=en&show_type=movie&genre=18&show_original_language=en&keyword=zombie';
+  const options = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
@@ -12,70 +9,12 @@ async function fetchServicesData() {
   };
 
   try {
-    const response = await fetch(urlServices, optionsServices);
-    const result = await response.text();
-    const data = JSON.parse(result);
-    servicesData.push(data); // Store the retrieved data in the servicesData array
-    console.log(data);
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
   } catch (error) {
     console.error(error);
-  }
-}
-
-// Call the fetchServicesData() function
-fetchServicesData();
-
-
-// Movie of the night genres API data
-const genresData = []; // Array to store genres data
-
-async function fetchGenresData() {
-  const urlGenres = 'https://streaming-availability.p.rapidapi.com/v2/genres';
-  const optionsGenres = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
-      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-    }
-  };
-
-  try {
-    const response = await fetch(urlGenres, optionsGenres);
-    const result = await response.text();
-    const data = JSON.parse(result);
-    genresData.push(data); // Store the retrieved data in the genresData array
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Call the fetchGenresData() function
-fetchGenresData();
-
-
-// IMDB API data
-const IMDBurl = 'https://online-movie-database.p.rapidapi.com/auto-complete?q=back%20to%20the%20future';
-const IMDBoptions = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': 'c124cecf0emshdb2c0b87705b346p17c3d6jsn1f514186fbf9',
-    'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
   }
 };
-const IMDBdata = []; // Array to store IMDB data
 
-async function fetchIMDBData() {
-  try {
-    const response = await fetch(IMDBurl, IMDBoptions);
-    const result = await response.text();
-    const data = JSON.parse(result);
-    IMDBdata.push(data); // Store the retrieved data in the IMDBdata array
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Call the fetchIMDBData() function
-fetchIMDBData();
+fetchData();

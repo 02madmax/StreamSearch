@@ -3,13 +3,14 @@ var dropdownSelection = document.querySelectorAll(".dropdown-item");
 var dropdownButton = document.querySelector('#dropdown-button');
 var servicesButton = document.querySelector('#services');
 
-dropdownSelection.forEach(function(dropItem) {
-  dropItem.addEventListener('click', function() {
+dropdownSelection.forEach(function (dropItem) {
+  dropItem.addEventListener('click', function () {
     var selectedOption = dropItem.textContent;
     dropdownButton.textContent = selectedOption;
   });
 });
 
+// Fetch movie data from API, genre type and services using movie database api
 const fetchData = async (genreId, servicesIds) => {
   const servicesQuery = servicesIds.join(',');
   const url = `https://streaming-availability.p.rapidapi.com/v2/search/basic?country=us&services=${servicesQuery}&output_language=en&show_type=movie&genre=${genreId}&show_original_language=en`;
@@ -25,40 +26,54 @@ const fetchData = async (genreId, servicesIds) => {
     const response = await fetch(url, options);
     const result = await response.json();
     console.log(result);
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      console.log(result);
-  
-      // Clear existing movie results
+
+    // Check if there are any movies in the result
+    if (result.result.length > 0) {
+      const movies = result.result;
+
+      // clear existing movies
       document.querySelector('.movies').innerHTML = '';
-  
-      // Check if there are any movies in the result
-      if (result.result.length > 0) {
-        result.result.forEach((movieResult) => {
-          const poster = movieResult.posterURLs[185];
-          const title = movieResult.title;
-          const year = movieResult.year;
-  
-          // Create the HTML for each movie result
-          const movie = `
+
+      // Iterate over each movie
+      for (const movie of movies) {
+        const poster = movie.posterURLs[185];
+        const title = movie.title;
+        const year = movie.year;
+
+        // Fetch movie description using imdb api
+        const descriptionUrl = `https://online-movie-database.p.rapidapi.com/auto-complete?q=${encodeURIComponent(title)}`;
+        const descriptionOptions = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
+            'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
+          }
+        };
+
+        try {
+          const descriptionResponse = await fetch(descriptionUrl, descriptionOptions);
+          const descriptionResult = await descriptionResponse.json();
+          const movieDescription = descriptionResult.d[0]?.s ?? 'No description available';
+
+          // Create the HTML for each movie result with description and overview, description displays 2 actors and overview is a summary
+          const movieHTML = `
             <div> 
               <img src="${poster}">
               <h2>${title}</h2>
               <h2>${year}</h2>
+              <p>${movieDescription}</p>
+              <p>${movie.overview}</p>
             </div>`;
-  
-          console.log(movie);
-          document.querySelector('.movies').innerHTML += movie;
-        });
-      } else {
-        console.log('No movies found.');
-      }
-    } catch (error) {
-      console.error(error);
-    };
-    
 
+          console.log(movieHTML);
+          document.querySelector('.movies').innerHTML += movieHTML;
+        } catch (descriptionError) {
+          console.error('Error fetching movie description:', descriptionError);
+        }
+      }
+    } else {
+      console.log('No movies found.');
+    }
   } catch (error) {
     console.error(error);
   }
@@ -67,8 +82,8 @@ const fetchData = async (genreId, servicesIds) => {
 // Event listener for service button click
 var serviceButtons = document.querySelectorAll(".service-button");
 
-serviceButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
+serviceButtons.forEach(function (button) {
+  button.addEventListener('click', function () {
     button.classList.toggle('active');
   });
 });
@@ -76,12 +91,12 @@ serviceButtons.forEach(function(button) {
 // Event listener for search button
 var searchButton = document.querySelector('#search');
 
-searchButton.addEventListener('click', function() {
+searchButton.addEventListener('click', function () {
   var selectedGenre = dropdownButton.textContent;
   var selectedServices = [];
 
   // Get the selected services
-  serviceButtons.forEach(function(button) {
+  serviceButtons.forEach(function (button) {
     if (button.classList.contains('active')) {
       var service = button.getAttribute('data-service');
       selectedServices.push(service);

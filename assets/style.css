@@ -17,6 +17,10 @@ h2, h3, h4, h5, h6 {
     color: rgb(255, 217, 4);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+p {
+    color: rgb(255, 217, 4);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 input, select, option, optgroup, textarea, button, pre, code {
     font-size: 100%;

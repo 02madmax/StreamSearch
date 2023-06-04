@@ -25,6 +25,25 @@ const fetchData = async (genreId, servicesIds) => {
     const response = await fetch(url, options);
     const result = await response.json();
     console.log(result);
+
+    //Creates the HTML for the movie results
+    const movieData = result.result
+    const movies = movieData.map((movieResult) => {
+      const poster = movieResult.posterURLs[185];
+      const title = movieResult.title;
+      const year = movieResult.year;
+      const movie = `
+          <div> 
+            <img src="${poster}">
+            <h2>${title}</h2>
+            <h2>${year}</h2>
+          </div>`;
+        console.log(movie);
+      document.querySelector('.movies').innerHTML += movie
+      
+    });
+    
+
   } catch (error) {
     console.error(error);
   }

@@ -44,3 +44,14 @@ input, select, option, optgroup, textarea, button, pre, code {
     color: rgb(255, 217, 4);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.dropdown{
+    margin-left: -12px;
+}
+
+.btn {
+    color: aquamarine;
+    background-color: rgb(1, 109, 250);
+    border: none;
+    border: 1px solid aquamarine;
+}

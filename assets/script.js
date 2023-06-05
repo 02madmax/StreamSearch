@@ -17,7 +17,7 @@ const fetchData = async (genreId, servicesIds) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '73685a151cmshe54ab2efcc475a7p17c306jsnbbf54fb3502a', /* 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745' */
+      'X-RapidAPI-Key': '73685a151cmshe54ab2efcc475a7p17c306jsnbbf54fb3502a', 
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
     }
   };
@@ -36,7 +36,7 @@ const fetchData = async (genreId, servicesIds) => {
 
       // Iterate over each movie
       for (const movie of movies) {
-        const poster = movie.posterURLs[185];
+        const poster = movie.posterURLs[342];
         const title = movie.title;
         const year = movie.year;
 
@@ -57,11 +57,12 @@ const fetchData = async (genreId, servicesIds) => {
 
           // Create the HTML for each movie result with description and overview, description displays 2 actors and overview is a summary
           const movieHTML = `
-            <div class="col-md-4 col-lg-3">
-              <div class="card g-3"> 
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="card mb-3"> 
                 <img class="card-img-top" alt="${title} movie poster" src="${poster}">
                 <div class="card-body">
-                  <h2 class="card-title">${title} ${year}</h2>
+                  <h2 class="card-title">${title}</h2>
+                  <h2 class="card-title">${year}</h2>
                   <p class="card-text">${movieDescription}</p>
                   <p class="card-text">${movie.overview}</p>
                 </div>

@@ -38,3 +38,9 @@ input, select, option, optgroup, textarea, button, pre, code {
     background: color #000;
     color: blue;
 }
+
+.card-body{
+    background-color: rgb(1, 8, 51);
+    color: rgb(255, 217, 4);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

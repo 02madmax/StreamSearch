@@ -17,7 +17,7 @@ const fetchData = async (genreId, servicesIds) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '47680950bfmsh526b1d3b26cf4e1p1f501bjsn740c45a2443b', /* 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745' */
+      'X-RapidAPI-Key': '73685a151cmshe54ab2efcc475a7p17c306jsnbbf54fb3502a', /* 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745' */
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
     }
   };
@@ -45,7 +45,7 @@ const fetchData = async (genreId, servicesIds) => {
         const descriptionOptions = {
           method: 'GET',
           headers: {
-            'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
+            'X-RapidAPI-Key': '73685a151cmshe54ab2efcc475a7p17c306jsnbbf54fb3502a',
             'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
           }
         };

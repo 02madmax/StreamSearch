@@ -17,7 +17,7 @@ const fetchData = async (genreId, servicesIds) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745',
+      'X-RapidAPI-Key': '47680950bfmsh526b1d3b26cf4e1p1f501bjsn740c45a2443b', /* 'efdf7f95b7msh5dfdbf4a9e49d24p1607ccjsn8e83b0591745' */
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
     }
   };
@@ -57,12 +57,15 @@ const fetchData = async (genreId, servicesIds) => {
 
           // Create the HTML for each movie result with description and overview, description displays 2 actors and overview is a summary
           const movieHTML = `
-            <div> 
-              <img src="${poster}">
-              <h2>${title}</h2>
-              <h2>${year}</h2>
-              <p>${movieDescription}</p>
-              <p>${movie.overview}</p>
+            <div class="col-md-4 col-lg-3">
+              <div class="card g-3"> 
+                <img class="card-img-top" alt="${title} movie poster" src="${poster}">
+                <div class="card-body">
+                  <h2 class="card-title">${title} ${year}</h2>
+                  <p class="card-text">${movieDescription}</p>
+                  <p class="card-text">${movie.overview}</p>
+                </div>
+              </div>
             </div>`;
 
           console.log(movieHTML);
@@ -124,7 +127,7 @@ searchButton.addEventListener('click', function () {
     "Western": "37"
   };
 
-  var servicesKey = {
+  var servicesKey = { 
     "netflix": "netflix",
     "hbo": "hbo",
     "hulu": "hulu",

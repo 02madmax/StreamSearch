@@ -16,3 +16,5 @@ Simply click on the following link to be brought to the website application and 
 A website application that can easily find the user something to watch that both fits their taste in media as well as making sure it’s available to watch on a streaming service the user is currently subscribed to. Simply select a genre, the streaming services you have a subscription to, and our application will find you something to watch.
 
 ## Sources Used
+https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability/
+https://rapidapi.com/apidojo/api/online-movie-database

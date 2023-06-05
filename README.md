@@ -18,3 +18,9 @@ A website application that can easily find the user something to watch that both
 ## Sources Used
 https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability/
 https://rapidapi.com/apidojo/api/online-movie-database
+
+### Deployed link
+https://02madmax.github.io/StreamSearch/
+
+### Repository link
+https://github.com/02madmax/StreamSearch

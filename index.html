@@ -16,7 +16,7 @@
 
     <div class="container-fluid mx-1">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-3 col-lg-3">
                 
                 <div class="container mx-0">
                     <div class="dropdown">
@@ -48,11 +48,30 @@
                     </div>
                 </div>
 
-                <div id="services-buttons">
-                    <button class="service-button" data-service="netflix">Netflix</button>
-                    <button class="service-button" data-service="hbo">HBO</button>
-                    <button class="service-button" data-service="hulu">Hulu</button>
-                    <button class="service-button" data-service="prime">Prime</button>
+                <!-- Button to start modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Select your Services
+                </button>
+                <!-- <Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div id="services-buttons">
+                                    <button class="service-button" data-service="netflix">Netflix</button>
+                                    <button class="service-button" data-service="hbo">HBO</button>
+                                    <button class="service-button" data-service="hulu">Hulu</button>
+                                    <button class="service-button" data-service="prime">Prime</button>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -61,7 +80,7 @@
                 <button class="btn btn-primary" id="search" type="submit">Search</button>
 
             </div>
-            <div class="col-lg-9">
+            <div class="col-md-9 col-lg-9">
                 <div class="movies row">
                     <!-- Search results will go here -->
                 </div>

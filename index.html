@@ -8,18 +8,19 @@
     <title>Stream Search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
 
 <body>
     <h1>Stream Search</h1>
-    <!--Button to start modal -->
+
+    <!-- Button to start modal
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Submit
     </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <Modal -->
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -34,17 +35,67 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    
+    <div class="container mx-0">
+        <div class="dropdown">
+            <button id="dropdown-button" class="btn btn-secondary dropdown-toggle" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Select Movie Genre
+            </button>
+            <ul id="genre-dropdown" class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Adventure</a></li>
+                <li><a class="dropdown-item" href="#">Animation</a></li>
+                <li><a class="dropdown-item" href="#">Comedy</a></li>
+                <li><a class="dropdown-item" href="#">Crime</a></li>
+                <li><a class="dropdown-item" href="#">Drama</a></li>
+                <li><a class="dropdown-item" href="#">Family</a></li>
+                <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                <li><a class="dropdown-item" href="#">Horror</a></li>
+                <li><a class="dropdown-item" href="#">Musical</a></li>
+                <li><a class="dropdown-item" href="#">Romance</a></li>
+                <li><a class="dropdown-item" href="#">Science Fiction</a></li>
+                <li><a class="dropdown-item" href="#">Sport</a></li>
+                <li><a class="dropdown-item" href="#">Thriller</a></li>
+                <li><a class="dropdown-item" href="#">War</a></li>
+                <li><a class="dropdown-item" href="#">Western</a></li>
+                <ul class="dropdown-menu">
+
+                </ul>
+                <div class="search-results">
+
+                </div>
+        </div>
     </div>
+    
+    <h2>Select your subscriptions</h2>
+    
+    <div class="col-md-3">
+        <div class="custom-control custom-checkbox image-checkbox">
+            <input type="checkbox" class="custom-control-input" id="input1">
+            <label class="custom-control-label" for="input1">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Netflix_logo.svg/2560px-Netflix_logo.svg.png"
+                    width="100%">
+                <span></span>
+            </label>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary" id="search" type="submit">Search</button>
 
-
+    <div>
+        <!-- Search results will go here -->
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
-    <script src="assets/script.js">
+    <script src="./assets/script.js">
 
     </script>
 
 </body>
+
 
 </html>

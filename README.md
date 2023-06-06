@@ -24,3 +24,6 @@ https://02madmax.github.io/StreamSearch/
 
 ### Repository link
 https://github.com/02madmax/StreamSearch
+
+### Screenshot
+![StreamSearch](assets/streamsearchscreenshot.png)
